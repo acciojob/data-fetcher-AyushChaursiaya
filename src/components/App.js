@@ -20,10 +20,23 @@ const App = () => {
   }
 
   useEffect(() => {
-    DataFetch();
-    return () => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://dummyjson.com/products');
+        setData(response.data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-    }
+    fetchData();
+
+    // Clean up function to cancel fetch request (if needed)
+    return () => {
+      // Cancel fetch request or cleanup (if any)
+    };
   }, []);
 
   if (isLoading) {
