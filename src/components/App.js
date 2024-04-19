@@ -26,17 +26,23 @@ const App = () => {
     }
   }, []);
 
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  if (!data) {
+    return <p>No data found</p>;
+  }
+
   return (
     <div>
-      {/* Do not remove the main div */}
-      {isLoading ?
-        (<p>Loading...</p>) :
-        error ?
-          (<p>Error: {error}</p>) :
-          data ?
-            (<pre><h1>Data Fetched from API</h1>{JSON.stringify(data, null, 2)}</pre>) : (<p>No data found</p>)}
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
-  )
+  );
 }
 
 export default App
