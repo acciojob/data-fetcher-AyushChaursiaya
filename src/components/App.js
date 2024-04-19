@@ -6,7 +6,7 @@ import './../styles/App.css';
 const App = () => {
 
   const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   function DataFetch() {
@@ -28,8 +28,13 @@ const App = () => {
 
   return (
     <div>
-        {/* Do not remove the main div */}
-        {isLoading ? (<p>Loading...</p>) : error ? (<p>Error: {error}</p>) : (<pre><h1>Data Fetched from API</h1>{JSON.stringify(data, null, 2)}</pre>)}
+      {/* Do not remove the main div */}
+      {isLoading ?
+        (<p>Loading...</p>) :
+        error ?
+          (<p>Error: {error}</p>) :
+          data ?
+            (<pre><h1>Data Fetched from API</h1>{JSON.stringify(data, null, 2)}</pre>) : (<p>No data found</p>)}
     </div>
   )
 }
