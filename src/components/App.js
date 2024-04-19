@@ -29,7 +29,7 @@ const App = () => {
   return (
     <div>
         {/* Do not remove the main div */}
-        {isLoading ? (<p>Loading...</p>) : error ? (<p>Error: {error}</p>) : (<pre>Data Fetched from API<h1></h1>{JSON.stringify(data, null, 2)}</pre>)}
+        {isLoading ? (<p>Loading...</p>) : error ? (<p>Error: {error}</p>) : (<pre><h1>Data Fetched from API</h1>{JSON.stringify(data, null, 2)}</pre>)}
     </div>
   )
 }
